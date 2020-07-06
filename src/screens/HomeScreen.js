@@ -2,13 +2,25 @@ import React, {useState} from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
 import GoalItem from "../components/GoalItem";
 import GoalInput from "../components/GoalInput";
+import {cos} from "react-native-reanimated";
 
 
 const HomeScreen = ({navigation}) => {
     const [goals, setGoals] = useState([]);
-    const addGoalHandler = (goalItem) => {
-        setGoals(goals => [...goals, {id: Math.random().toString(), value: goalItem}]);
+    const addGoalHandler = (goalTitle) => {
+        setGoals(currentGoals => [...currentGoals,
+            {
+                id: Math.random().toString(),
+                value: goalTitle
+            }]);
     };
+    const removeGoalHandler = goalId => {
+        setGoals(
+            currentGoals => {
+                return currentGoals.filter((goal) => goal.id !== goalId)
+            }
+        )
+    }
     return (
         <View style={styles.homeScreen}>
             <GoalInput addGoalHandler={addGoalHandler}/>
@@ -17,7 +29,9 @@ const HomeScreen = ({navigation}) => {
                     keyExtractor={goal => goal + Math.random().toString()}
                     data={goals}
                     renderItem={({item}) => {
-                        return <GoalItem item={item.value}/>
+                        return (<GoalItem title={item.value}
+                                          id={item.id}
+                                         onDelete={()=>removeGoalHandler(item.id)}/>)
                     }
                     }
                 />
