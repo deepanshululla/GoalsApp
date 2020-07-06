@@ -13,6 +13,7 @@ const HomeScreen = ({navigation}) => {
                 id: Math.random().toString(),
                 value: goalTitle
             }]);
+        setIsAddMode(false);
     };
     const removeGoalHandler = goalId => {
         setGoals(
