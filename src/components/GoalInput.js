@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
     button: {
         flex: 1,
         width: '40%',
+        margin:10,
+        fontSize: 30
     }
 });
 
