@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Text, StyleSheet, View, Button, TextInput, FlatList} from 'react-native';
+import GoalItem from "../components/GoalItem";
 
 
 const HomeScreen = ({navigation}) => {
@@ -26,14 +27,10 @@ const HomeScreen = ({navigation}) => {
             </View>
             <View style={styles.goalsList}>
                 <FlatList
-                    keyExtractor={goal => goal}
+                    keyExtractor={goal => goal+Math.random().toString()}
                     data={goals}
                     renderItem={({item}) => {
-                        console.log(item);
-                        return (
-                            <Text style={styles.listItem}>
-                            {item}
-                        </Text>)
+                        return <GoalItem item={item}/>
                     }
 
 
