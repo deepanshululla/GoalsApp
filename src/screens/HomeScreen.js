@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList, Button} from 'react-native';
 import GoalItem from "../components/GoalItem";
 import GoalInput from "../components/GoalInput";
-import {cos} from "react-native-reanimated";
 
 
 const HomeScreen = ({navigation}) => {
     const [goals, setGoals] = useState([]);
+    const [isAddMode, setIsAddMode] = useState(false);
     const addGoalHandler = (goalTitle) => {
         setGoals(currentGoals => [...currentGoals,
             {
@@ -21,9 +21,13 @@ const HomeScreen = ({navigation}) => {
             }
         )
     }
+    const showAddGoalModal = () => {
+        setIsAddMode(true)
+    }
     return (
         <View style={styles.homeScreen}>
-            <GoalInput addGoalHandler={addGoalHandler}/>
+            <Button title={"Add new goal"} onPress={showAddGoalModal}/>
+            <GoalInput addGoalHandler={addGoalHandler} visible={isAddMode}/>
             <View style={styles.goalsList}>
                 <FlatList
                     keyExtractor={goal => goal + Math.random().toString()}
