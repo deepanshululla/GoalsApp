@@ -11,17 +11,17 @@ const GoalInput = (props) => {
 
     return (
 
-    <View style={styles.GoalsAddView}>
+        <View style={styles.GoalsAddView}>
 
-        <TextInput style={styles.textInput}
-                   onChangeText={goalInputHandler}
-                   placeholder={"Enter Goal"}
-                   value={enteredGoal}/>
-        <Button
-            title={"Add"} onPress={() => props.addGoalHandler(enteredGoal)}/>
+            <TextInput style={styles.textInput}
+                       onChangeText={goalInputHandler}
+                       placeholder={"Enter Goal"}
+                       value={enteredGoal}/>
+            <Button
+                title={"Add"} onPress={() => props.addGoalHandler(enteredGoal)}/>
 
-    </View>
-        )
+        </View>
+    )
 };
 
 const styles = StyleSheet.create({
