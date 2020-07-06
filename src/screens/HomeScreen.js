@@ -21,14 +21,14 @@ const HomeScreen = ({navigation}) => {
                 return currentGoals.filter((goal) => goal.id !== goalId)
             }
         )
-    }
-    const showAddGoalModal = () => {
-        setIsAddMode(true)
-    }
+    };
+    const showAddGoalModal = (isVisible) => {
+        setIsAddMode(isVisible);
+    };
     return (
         <View style={styles.homeScreen}>
-            <Button title={"Add new goal"} onPress={showAddGoalModal}/>
-            <GoalInput addGoalHandler={addGoalHandler} visible={isAddMode}/>
+            <Button title={"Add new goal"} onPress={showAddGoalModal.bind(this, true)}/>
+            <GoalInput addGoalHandler={addGoalHandler} visible={isAddMode} setVisible={showAddGoalModal.bind(this, false)}/>
             <View style={styles.goalsList}>
                 <FlatList
                     keyExtractor={goal => goal + Math.random().toString()}
