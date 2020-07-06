@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Text, StyleSheet, View, Button, TextInput, FlatList} from 'react-native';
+import React from 'react';
+import {Text, StyleSheet, View} from 'react-native';
 
 
 const GoalItem = props => {
